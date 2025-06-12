@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Application of Molecular Descriptors in the In Vivo Genotoxicity Prediction Using Machine Learning</title>
+
+    <!-- DataTables CSS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <!-- DataTables JS -->
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+<header>
+    <h1>Application of Molecular Descriptors in the In Vivo Genotoxicity Prediction Using Machine Learning</h1>
+</header>
+
+<nav class="navbar">
+    <a href="#description">Descriptors</a>
+    <a href="#results">Results</a>
+    <a href="#conclusao">Conclusion</a>
+    <a href="#logos">supporting</a>
+</nav>
+
+<button id="backToTop" onclick="scrollToTop()">↑ Topo</button>
+
+<div class="lang-switch">
+  <button onclick="setLanguage('pt')">Português</button>
+  <button onclick="setLanguage('en')">English</button>
+</div>
+
+
+<main>
+<section id="description" class="content-block">
+    <div class="lang-pt">
+    <h2>Como funcionam os descritores moleculares?</h2>
+    <p>
+        O processo de predição de genotoxicidade in vivo começa com a conversão das estruturas moleculares dos compostos químicos
+        em vetores numéricos chamados <strong>descritores moleculares</strong>. Esses descritores capturam propriedades
+        físico-químicas, topológicas e estruturais da molécula, permitindo que algoritmos de machine learning aprendam padrões
+        associados à toxicidade.
+    </p>
+    <p>Alguns dos descritores utilizados incluem:</p>
+    <ul>
+        <li><strong>Peso molecular:</strong> massa total da molécula.</li>
+        <li><strong>TPSA (Área de Superfície Polar Topológica):</strong> relacionada à absorção e permeabilidade.</li>
+        <li><strong>nHBAs / nHBDs:</strong> número de aceitadores e doadores de ligações de hidrogênio.</li>
+        <li><strong>LogP:</strong> coeficiente de partição octanol/água, indicando hidrofobicidade.</li>
+        <li><strong>Índices de E-stado:</strong> propriedades eletrônicas e topológicas de cada átomo.</li>
+        <li><strong>Número de ligações rotacionáveis:</strong> flexibilidade estrutural.</li>
+    </ul>
+    <div class="descritor-imagem">
+        <img src="descriptors.png" alt="Descritores moleculares">
+    </div>
+    <p>
+        Ao alimentar esses descritores em modelos como Random Forest ou LightGBM, é possível prever se a molécula analisada apresenta ou não potencial genotóxico, com base em padrões aprendidos a partir de dados experimentais.
+    </p>
+  </div>
+
+  <div class="lang-en" style="display: none;">
+    <h2>How do molecular descriptors work?</h2>
+    <p>
+        The process of predicting in vivo genotoxicity begins by converting the molecular structures of chemical compounds
+        into numerical vectors called <strong>molecular descriptors</strong>. These descriptors capture physicochemical,
+        topological, and structural properties of the molecule, allowing machine learning algorithms to learn patterns
+        associated with toxicity.
+    </p>
+    <p>Some of the descriptors used include:</p>
+    <ul>
+        <li><strong>Molecular weight:</strong> total mass of the molecule.</li>
+        <li><strong>TPSA (Topological Polar Surface Area):</strong> related to absorption and permeability.</li>
+        <li><strong>nHBAs / nHBDs:</strong> number of hydrogen bond acceptors and donors.</li>
+        <li><strong>LogP:</strong> octanol-water partition coefficient, indicating hydrophobicity.</li>
+        <li><strong>E-state indices:</strong> electronic and topological properties of each atom.</li>
+        <li><strong>Number of rotatable bonds:</strong> structural flexibility.</li>
+    </ul>
+    <div class="descritor-imagem">
+        <img src="descriptors.png" alt="Molecular descriptors">
+    </div>
+    <p>
+        When fed into models such as Random Forest or LightGBM, these descriptors can help predict whether a given molecule has genotoxic potential based on patterns learned from experimental data.
+    </p>
+  </div>
+</section>
+
+
+
+
+
+
+    <section id="results" class="table-container">
+        <h2>Full Model Evaluation Metrics</h2>
+        <table id="resultsTable" class="display">
+            <thead>
+                <tr>
+                    <th>Model</th>
+                    <th>Accuracy (mean)</th><th>Accuracy (std)</th>
+                    <th>Balanced Acc. (mean)</th><th>Balanced Acc. (std)</th>
+                    <th>ROC AUC (mean)</th><th>ROC AUC (std)</th>
+                    <th>F1 Score (mean)</th><th>F1 Score (std)</th>
+                    <th>Time (mean)</th><th>Time (std)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Aqui estão os dados. Exibindo alguns para exemplo. Você pode expandir conforme necessário. -->
+<tr><td>ExtraTreesClassifier</td><td>0.80</td><td>0.02</td><td>0.77</td><td>0.02</td><td>0.77</td><td>0.02</td><td>0.80</td><td>0.02</td><td>0.83</td><td>0.16</td></tr>
+<tr><td>RandomForestClassifier</td><td>0.80</td><td>0.02</td><td>0.76</td><td>0.02</td><td>0.76</td><td>0.02</td><td>0.79</td><td>0.02</td><td>1.35</td><td>0.18</td></tr>
+<tr><td>XGBClassifier</td><td>0.79</td><td>0.03</td><td>0.77</td><td>0.03</td><td>0.77</td><td>0.03</td><td>0.79</td><td>0.03</td><td>2.14</td><td>0.87</td></tr>
+<tr><td>LGBMClassifier</td><td>0.79</td><td>0.02</td><td>0.77</td><td>0.02</td><td>0.77</td><td>0.02</td><td>0.79</td><td>0.02</td><td>1.36</td><td>0.21</td></tr>
+<tr><td>NuSVC</td><td>0.79</td><td>0.02</td><td>0.76</td><td>0.03</td><td>0.76</td><td>0.03</td><td>0.79</td><td>0.03</td><td>0.77</td><td>0.03</td></tr>
+<tr><td>KNeighborsClassifier</td><td>0.79</td><td>0.02</td><td>0.76</td><td>0.02</td><td>0.76</td><td>0.02</td><td>0.79</td><td>0.02</td><td>0.07</td><td>0.02</td></tr>
+<tr><td>SVC</td><td>0.78</td><td>0.02</td><td>0.74</td><td>0.03</td><td>0.74</td><td>0.03</td><td>0.77</td><td>0.03</td><td>0.75</td><td>0.10</td></tr>
+<tr><td>BaggingClassifier</td><td>0.77</td><td>0.02</td><td>0.74</td><td>0.02</td><td>0.74</td><td>0.02</td><td>0.76</td><td>0.02</td><td>2.00</td><td>0.07</td></tr>
+<tr><td>RidgeClassifierCV</td><td>0.77</td><td>0.03</td><td>0.74</td><td>0.03</td><td>0.74</td><td>0.03</td><td>0.76</td><td>0.03</td><td>0.37</td><td>0.21</td></tr>
+<tr><td>RidgeClassifier</td><td>0.76</td><td>0.03</td><td>0.73</td><td>0.03</td><td>0.73</td><td>0.03</td><td>0.76</td><td>0.03</td><td>0.16</td><td>0.04</td></tr>
+<tr><td>LinearDiscriminantAnalysis</td><td>0.76</td><td>0.03</td><td>0.73</td><td>0.03</td><td>0.73</td><td>0.03</td><td>0.75</td><td>0.03</td><td>0.27</td><td>0.01</td></tr>
+<tr><td>LinearSVC</td><td>0.75</td><td>0.02</td><td>0.73</td><td>0.02</td><td>0.73</td><td>0.02</td><td>0.75</td><td>0.02</td><td>11.67</td><td>1.33</td></tr>
+<tr><td>LogisticRegression</td><td>0.75</td><td>0.03</td><td>0.72</td><td>0.03</td><td>0.72</td><td>0.03</td><td>0.75</td><td>0.03</td><td>0.21</td><td>0.08</td></tr>
+<tr><td>LabelPropagation</td><td>0.75</td><td>0.03</td><td>0.70</td><td>0.03</td><td>0.70</td><td>0.03</td><td>0.74</td><td>0.03</td><td>0.33</td><td>0.03</td></tr>
+<tr><td>LabelSpreading</td><td>0.75</td><td>0.03</td><td>0.70</td><td>0.03</td><td>0.70</td><td>0.03</td><td>0.74</td><td>0.03</td><td>0.41</td><td>0.03</td></tr>
+<tr><td>DecisionTreeClassifier</td><td>0.73</td><td>0.03</td><td>0.71</td><td>0.03</td><td>0.71</td><td>0.03</td><td>0.73</td><td>0.03</td><td>0.38</td><td>0.08</td></tr>
+<tr><td>ExtraTreeClassifier</td><td>0.73</td><td>0.01</td><td>0.71</td><td>0.02</td><td>0.71</td><td>0.02</td><td>0.73</td><td>0.01</td><td>0.06</td><td>0.01</td></tr>
+<tr><td>CalibratedClassifierCV</td><td>0.75</td><td>0.02</td><td>0.69</td><td>0.03</td><td>0.69</td><td>0.03</td><td>0.72</td><td>0.03</td><td>38.42</td><td>1.62</td></tr>
+<tr><td>AdaBoostClassifier</td><td>0.73</td><td>0.02</td><td>0.69</td><td>0.02</td><td>0.69</td><td>0.02</td><td>0.72</td><td>0.02</td><td>1.74</td><td>0.20</td></tr>
+<tr><td>SGDClassifier</td><td>0.72</td><td>0.03</td><td>0.70</td><td>0.03</td><td>0.70</td><td>0.03</td><td>0.72</td><td>0.03</td><td>0.22</td><td>0.03</td></tr>
+<tr><td>Perceptron</td><td>0.69</td><td>0.04</td><td>0.67</td><td>0.04</td><td>0.67</td><td>0.04</td><td>0.69</td><td>0.04</td><td>0.11</td><td>0.02</td></tr>
+<tr><td>NearestCentroid</td><td>0.67</td><td>0.04</td><td>0.67</td><td>0.04</td><td>0.67</td><td>0.04</td><td>0.68</td><td>0.04</td><td>0.08</td><td>0.02</td></tr>
+<tr><td>PassiveAggressiveClassifier</td><td>0.67</td><td>0.04</td><td>0.65</td><td>0.04</td><td>0.65</td><td>0.04</td><td>0.67</td><td>0.04</td><td>0.11</td><td>0.02</td></tr>
+<tr><td>BernoulliNB</td><td>0.65</td><td>0.03</td><td>0.64</td><td>0.03</td><td>0.64</td><td>0.03</td><td>0.65</td><td>0.03</td><td>0.08</td><td>0.02</td></tr>
+
+                <!-- Adicione os demais modelos aqui seguindo o mesmo padrão -->
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<section id="conclusao" class="content-block">
+     <div class="lang-pt">
+    <h2>Conclusão</h2>
+    <p>
+        O uso de descritores moleculares combinados com algoritmos de aprendizado de máquina oferece uma abordagem eficiente,
+        ética e acessível para prever a genotoxicidade de compostos químicos.
+    </p>
+    <div class="descritor-imagem">
+        <img src="learning.png" alt="aprendizado">
+    </div>
+    <p>
+        Essa estratégia possibilita a triagem preliminar de substâncias com maior agilidade e menor custo,
+        reduzindo a dependência de testes laboratoriais in vivo e promovendo a substituição, redução e refinamento do uso de animais em pesquisas (princípios dos 3Rs).
+    </p>
+    <div class="descritor-imagem">
+        <img src="3Rs.jpg" alt="3Rs">
+    </div>
+    <p>
+        Além disso, os modelos gerados são escaláveis e interpretáveis, tornando-se ferramentas valiosas para o desenvolvimento de fármacos
+        e para a avaliação de riscos em contextos regulatórios e ambientais.
+    </p>
+  </div>
+
+  <div class="lang-en" style="display: none;">
+    <h2>Conclusion</h2>
+    <p>
+        The use of molecular descriptors combined with machine learning algorithms offers an efficient,
+        ethical, and accessible approach to predicting the genotoxicity of chemical compounds.
+    </p>
+    <div class="descritor-imagem">
+        <img src="learning.png" alt="learning">
+    </div>
+    <p>
+        This strategy enables preliminary screening of substances with greater speed and lower cost,
+        reducing reliance on in vivo laboratory testing and promoting the replacement, reduction, and refinement of animal use in research (3Rs principle).
+    </p>
+    <div class="descritor-imagem">
+        <img src="3Rs.jpg" alt="3Rs">
+    </div>
+    <p>
+        Furthermore, the generated models are scalable and interpretable, making them valuable tools for drug development
+        and risk assessment in pharmaceutical and environmental contexts.
+    </p>
+  </div>
+</section>
+
+
+
+<footer>
+    <h2>supporting:</h2>
+    <div id="logos" class="logos">
+        <img src="logo_insilitox.png" alt="InSilitox logo">
+        <img src="logo_ufg.jpeg" alt="UFG logo">
+        <img src="logo_unb.jpg" alt="UnB logo">
+    </div>
+</footer>
+
+<script>
+    $(document).ready(function () {
+        $('#resultsTable').DataTable({
+            order: [[1, 'desc']]  // Ordenar pela segunda coluna (Accuracy mean) em ordem decrescente
+        });
+    })
+
+    function scrollToSection(id) {
+        const element = document.getElementById(id);
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function setLanguage(lang) {
+    document.querySelectorAll('.lang-pt').forEach(el => {
+      el.style.display = (lang === 'pt') ? '' : 'none';
+    });
+    document.querySelectorAll('.lang-en').forEach(el => {
+      el.style.display = (lang === 'en') ? '' : 'none';
+    });
+  }
+
+    // Mostrar botão "Voltar ao topo" ao rolar
+    window.onscroll = function () {
+        const btn = document.getElementById("backToTop");
+        if (document.documentElement.scrollTop > 200) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+        }
+    };
+</script>
+
+</body>
+</html>

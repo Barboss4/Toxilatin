@@ -1,0 +1,186 @@
+/* ===== RESET E BASE ===== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f2f2f2;
+    color: #1c1c1c;
+}
+
+/* ===== TOPO ===== */
+header {
+    background-color: #4682B4;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 998;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(20px, 5vw, 28px);
+}
+
+h2 {
+    text-align: center;
+    color: #2a4d69;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* ===== NAVEGAÇÃO ===== */
+.navbar {
+    position: sticky;
+    top: 60px;
+    width: 100%;
+    background-color: #ffffffee;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    padding: 12px 0;
+    backdrop-filter: blur(5px);
+}
+
+.nav-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 0 10px;
+}
+
+.navbar a {
+    color: #4682B4;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px 14px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.navbar a:hover {
+    background-color: #4682B4;
+    color: white;
+}
+
+/* ===== BOTÃO VOLTAR AO TOPO ===== */
+#backToTop {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #4682B4;
+    color: white;
+    border: none;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    font-size: 18px;
+    text-align: center;
+    line-height: 48px;
+    cursor: pointer;
+    display: none;
+    z-index: 1000;
+}
+
+/* ===== SEÇÕES ===== */
+main {
+    padding: 30px 16px;
+    max-width: 95%;
+    margin: auto;
+}
+
+.content-block {
+    margin: 40px auto;
+    max-width: 900px;
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    line-height: 1.6;
+}
+
+/* ===== TABELA ===== */
+.table-container {
+    overflow-x: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 1px 10px rgba(0,0,0,0.1);
+}
+
+table {
+    width: 100%;
+    font-size: 14px;
+    border-collapse: collapse;
+    min-width: 600px;
+}
+
+table th, table td {
+    padding: 6px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+    background: #ddd;
+}
+
+footer .logos img {
+    max-height: 50px;
+    margin: 0 10px;
+    vertical-align: middle;
+}
+
+/* ===== IMAGENS E LAYOUTS ===== */
+.descritor-imagem {
+    flex: 1 1 250px;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.descritor-imagem img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* ===== BOTÃO DE IDIOMA ===== */
+.lang-switch {
+    text-align: center;
+    margin: 20px;
+}
+
+.lang-switch button {
+    background-color: #4682B4;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    margin: 0 10px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.lang-switch button:hover {
+    background-color: #315f88;
+}
+
+/* ===== RESPONSIVO EXTRA PEQUENO (opcional) ===== */
+@media (max-width: 600px) {
+    .nav-container {
+        flex-direction: column;
+        align-items: center;
+    }
+}
