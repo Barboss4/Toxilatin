@@ -162,16 +162,17 @@ footer .logos img {
     text-align: center;
     margin: 20px;
 }
-
 .lang-switch button {
     background-color: #4682B4;
     color: white;
     border: none;
-    padding: 8px 16px;
-    margin: 0 10px;
+    padding: 16px 28px; /* mais espaço interno */
+    margin: 0 12px;
+    font-size: 18px;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .lang-switch button:hover {
